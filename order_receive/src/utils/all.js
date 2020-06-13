@@ -11,9 +11,9 @@ if (JSON.parse(localStorage.getItem("loginStatus"))) {
       }
     let token=''
     let secret = ''
-    let userId = "1"
-    // const hostUrl5 = 'http://192.168.1.14:9709';//接口   
-      const hostUrl5 = 'http://www.bn.com/index.php/';//接口
+    let userId = ""
+    const hostUrl5 = 'http://121.36.231.122:18000/index.php/';// 线上接口   
+      // const hostUrl5 = 'http://www.bn.com/index.php/';//接口
     export default {
       hostUrl5,
       token,

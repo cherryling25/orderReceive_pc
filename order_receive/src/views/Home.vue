@@ -4,57 +4,40 @@
       
       <el-aside width="200px">
         <el-menu :default-openeds="['1', '3']">
-          <!-- <a href="http://www.duoduogmv.com/pc/index/index.html">
-            <el-menu-item index="1">
-              <i class="el-icon-s-home"></i>
-              <span slot="title">首页</span>
-            </el-menu-item>
-          </a> -->
-          <!-- <router-link to="/runCenter">
-            <el-menu-item index="1">
-              <i class="el-icon-message"></i>
-              <span slot="title">首页</span>
-            </el-menu-item>
-          </router-link> -->
-
-          <router-link to="/publish">
-            <el-menu-item index="1">
-              <i class="el-icon-guide"></i>
-              <span slot="title">发布任务</span>
-            </el-menu-item>
-          </router-link>
-
-          <router-link to="/orderManage">
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">订单管理</span>
-            </el-menu-item>
-          </router-link>
-          <!-- <el-submenu index="2">
+          <el-submenu index="1">
             <template slot="title"
-              ><i class="el-icon-menu"></i>订单管理</template
+              ><i class="el-icon-menu"></i>订单</template
             >
             <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
+              <router-link to="/orderList">
+              <el-menu-item index="1-1">订单列表</el-menu-item>
+              </router-link>
+
+              <router-link to="/orderReceive">
+              <el-menu-item index="1-2">接单</el-menu-item>
+              </router-link>
+
+              <router-link to="/operation">
+              <el-menu-item index="1-3">操作</el-menu-item>
+              </router-link>
+
+              <router-link to="/appraise">
+              <el-menu-item index="1-4">评价</el-menu-item>
+              </router-link>
+
+               <router-link to="/money">
+              <el-menu-item index="1-5">金额</el-menu-item>
+              </router-link>
             </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="2-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="2-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-            </el-submenu>
-          </el-submenu> -->
+          </el-submenu>
 
 
-          <!-- <router-link to="/invite"> -->
+          <!-- <router-link to="/invite">
             <el-menu-item index="3">
               <i class="el-icon-setting"></i>
               <span slot="title">邀请返利</span>
             </el-menu-item>
-          <!-- </router-link> -->
+          </router-link> -->
           <!-- <el-submenu index="3">
             <template slot="title"
               ><i class="el-icon-setting"></i>邀请返利</template
@@ -73,7 +56,7 @@
             </el-submenu>
           </el-submenu> -->
 
-          <router-link to="/taskManage">
+          <!-- <router-link to="/taskManage">
           <el-menu-item index="4">
             <i class="el-icon-message"></i>
             <span slot="title">任务管理</span>
@@ -111,14 +94,14 @@
           <el-menu-item index="9">
             <i class="el-icon-suitcase"></i>
             <span slot="title">代发快递</span>
-          </el-menu-item>
+          </el-menu-item> -->
         </el-menu>
       </el-aside>
 
       <el-container>
         <el-header>
           <el-row>
-             <el-col :span="12" :offset="3">
+             <!-- <el-col :span="12" :offset="3">
                 <el-tabs v-model="activeName" @tab-click="handleClick">
                   <el-tab-pane label="首页" name="first">
                   </el-tab-pane>
@@ -127,9 +110,9 @@
                   <el-tab-pane label="发布任务" name="third"></el-tab-pane>
                   <el-tab-pane label="卖家中心" name="fourth"></el-tab-pane>
                 </el-tabs>
-            </el-col>
+            </el-col> -->
     
-            <el-col :span="2" :offset="6"
+            <el-col :span="3" :offset="20"
               ><div class="grid-content">
                 <div style="display:flex;justify-content: space-around;">
                   <img
@@ -179,6 +162,7 @@ export default {
     logout(){
       this.$confirm("确认退出吗?","提示",{})
       .then(()=>{
+        localStorage.clear("id")
         this.$router.push("/");
       }).catch(()=>{
 
@@ -202,6 +186,7 @@ export default {
 
   },
   created(){
+    this.GLOBAL.userId = localStorage.getItem("id");
     console.log(this.GLOBAL.userId)
   }
 };

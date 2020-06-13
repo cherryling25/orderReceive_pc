@@ -176,11 +176,10 @@ export default {
           phone: this.registerForm.userphone
         }),
 
-        url: this.GLOBAL.hostUrl5 +"index/Login/phone_sms"
+        url: this.GLOBAL.hostUrl5 + "index/Login/phone_sms"
       }).then(res => {
         console.log(res);
       });
-
 
       // axios({
       //   headers: {
@@ -237,12 +236,12 @@ export default {
         });
         return false;
       }
-    //   if (this.registerForm.password != this.registerForm.checkPass) {
-    //     this.$notify.error({
-    //       message: "两次输入的密码不一致"
-    //     });
-    //     return false;
-    //   }
+      //   if (this.registerForm.password != this.registerForm.checkPass) {
+      //     this.$notify.error({
+      //       message: "两次输入的密码不一致"
+      //     });
+      //     return false;
+      //   }
 
       return true;
     },
@@ -262,14 +261,14 @@ export default {
           // "captcha":this.registerForm.checkPass,
           code: this.registerForm.msgInput,
           // wechat_number: this.registerForm.wxNumber,
-          pwd: this.registerForm.password,
+          pwd: this.registerForm.password
           // pwd_2: this.registerForm.checkPass
         }),
 
-        url: this.GLOBAL.hostUrl5 +"hands/Login/registered"
+        url: this.GLOBAL.hostUrl5 + "hands/Login/registered"
       }).then(res => {
         if (res.data.code == 1 || res.data.code == "1") {
-         this.$notify({
+          this.$notify({
             message: "注册成功",
             type: "success"
           });
@@ -312,14 +311,32 @@ export default {
           pwd: this.loginForm.password
         }),
 
-        url: this.GLOBAL.hostUrl5 +"hands/Login/login"
+        url: this.GLOBAL.hostUrl5 + "hands/Login/login"
       }).then(res => {
         if (res.data.code == 1 || res.data.code == "1") {
-          this.GLOBAL.userId= res.data.data.id
-          this.$router.push({
-            // path: "../orderManage"
-            path: "../deposit"
-          });
+          this.GLOBAL.userId = res.data.data.id;
+          localStorage.setItem("id", res.data.data.id);
+          if (res.data.data.state == 1) {
+            this.$router.push({
+              path: "../deposit"
+            });
+          } else if (res.data.data.state == 2) {
+            this.$router.push({
+              path: "../home"
+            });
+          } else if (res.data.data.state == 3) {
+            this.$notify.error({
+              message: "该账号正在审核中"
+            });
+          } else if (res.data.data.state == 4) {
+            this.$notify.error({
+              message: "该账号被封"
+            });
+          }else if (res.data.data.state == 5) {
+            this.$notify.error({
+              message: "该账号没有通过审核"
+            });
+          }
         } else {
           this.$notify.error({
             message: "用户名或密码错误"
@@ -365,5 +382,4 @@ export default {
     width: 50%;
     min-width: 350px !important;
 } */
-
 </style>

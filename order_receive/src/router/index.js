@@ -24,69 +24,29 @@ export default new Router({
         import("../views/Home.vue"),
         children: [
           {
-            path: "/orderManage",
-            name: "orderManage",
-            component: () => import('../components/orderManage.vue')
+            path: "/orderList",
+            name: "orderList",
+            component: () => import('../components/orderList.vue')
           },
           {
-            path: "/taskManage",
-            name: "taskManage",
-            component: () => import('../components/taskManage.vue')
+            path: "/orderReceive",
+            name: "orderReceive",
+            component: () => import('../components/orderReceive.vue')
           },
           {
-            path: "/invite",
-            name: "invite",
-            component: () => import('../components/invite.vue')
+            path: "/operation",
+            name: "operation",
+            component: () => import('../components/operation.vue')
           },
           {
-            path: "/shopInfo",
-            name: "shopInfo",
-            component: () => import('../components/shopInfo.vue')
+            path: "/appraise",
+            name: "appraise",
+            component: () => import('../components/appraise.vue')
           },
           {
-            path: "/transactionDetail",
-            name: "transactionDetail",
-            component: () => import('../components/transactionDetail.vue')
-          },
-          {
-            path: "/appealCenter",
-            name: "appealCenter",
-            component: () => import('../components/appealCenter.vue')
-          },
-          {
-            path: "/blacklist",
-            name: "blacklist",
-            component: () => import('../components/blacklist.vue')
-          },
-          {
-            path: "/publish",
-            name: "publish",
-            component: () => import('../components/publish/publish.vue')
-          },
-          {
-            path: "/pay",
-            name: "pay",
-            component: () => import('../components/publish/pay.vue')
-          },
-          {
-            path: "/succeed",
-            name: "succeed",
-            component: () => import('../components/publish/succeed.vue')
-          },
-          {
-            path: "/taskInfo",
-            name: "taskInfo",
-            component: () => import('../components/publish/taskInfo.vue')
-          },
-          {
-            path: "/sellerCenter",
-            name: "sellerCenter",
-            component: () => import('../components/sellerCenter/sellerCenter.vue')
-          },
-          {
-            path: "/rechargePrincipal",
-            name: "rechargePrincipal",
-            component: () => import('../components/sellerCenter/rechargePrincipal.vue')
+            path: "/money",
+            name: "money",
+            component: () => import('../components/money.vue')
           }
         ]
     }
