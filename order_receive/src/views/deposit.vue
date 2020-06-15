@@ -239,10 +239,16 @@ export default {
         url: this.GLOBAL.hostUrl5 + "hands/Login/yajin_price"
       }).then(res => {
         if (res.data.code == 1 || res.data.code == "1") {
+          setTimeout(() => {
+            this.$router.push({
+              path: "/"
+            });
+          }, 2000);
           this.$notify({
             message: "提交成功等待后台审核",
             type: "success"
           });
+
         } else {
           this.$notify.error({
             message: "提交失败"

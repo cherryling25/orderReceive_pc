@@ -295,6 +295,12 @@ export default {
     },
     // 接单
     orderReceive(index) {
+      if (this.GLOBAL.state == 1) { // 未缴纳
+        this.$router.push({
+          path: "../deposit"
+        });
+      } else if (this.GLOBAL.state == 2) {    // 缴纳押金
+          
         this.$confirm("是否接单?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -331,6 +337,21 @@ export default {
             message: "已取消删除"
           });
         });
+       
+      } else if (this.GLOBAL.state == 3) {
+        this.$notify.error({
+          message: "该账号正在审核中"
+        });
+      } else if (this.GLOBAL.state == 4) {
+        this.$notify.error({
+          message: "该账号被封"
+        });
+      }else if (this.GLOBAL.state == 5) {
+        this.$notify.error({
+          message: "该账号没有通过审核"
+        });
+      }
+
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);

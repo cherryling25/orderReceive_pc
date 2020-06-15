@@ -255,7 +255,7 @@
         <el-form-item label="图片" label-width="100px">
           <el-upload
             class="avatar-uploader"
-            action="http://121.36.231.122:18000/index.php/index/Store/img"
+            :action="UploadUrl()" 
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
           >
@@ -325,6 +325,9 @@ export default {
     };
   },
   methods: {
+    UploadUrl:function(){
+        return this.GLOBAL.imgUrl + "index/Store/img";  
+ v     },
     onSubmit() {
       console.log("submit!");
     },
@@ -336,7 +339,6 @@ export default {
     appraise(index) {
       this.dialogFormVisible = true;
       this.id =index
-     
     },
     //确定
     upload(){

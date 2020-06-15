@@ -220,7 +220,7 @@
           </el-table-column>
           <el-table-column prop="goods_url" label="商品链接"> </el-table-column>
 
-          <el-table-column fixed="right" label="操作" width="120">
+          <el-table-column fixed="right" label="操作" width="140">
             <template slot-scope="scope">
               <el-button
                 @click.native.prevent="back(scope.row.id)"
@@ -261,7 +261,7 @@
                   <el-form-item label="商品图片" label-width="100px">
                     <el-upload
                       class="avatar-uploader"
-                      action="http://121.36.231.122:18000/index.php/index/Store/img"
+                      :action="UploadUrl()" 
                       :show-file-list="false"
                       :on-success="handleAvatarSuccess"
                     >
@@ -320,13 +320,14 @@ export default {
       page: 1,
       size: 10,
       status: 0,
-
+      
       dialogFormVisible: false,
       dialogForm: {
         name: "",
         number: "",
         pic: "",
         pic1: ""
+       
       },
 
       form: {
@@ -351,6 +352,9 @@ export default {
     };
   },
   methods: {
+    UploadUrl:function(){
+        return this.GLOBAL.imgUrl + "index/Store/img";  
+    },
     onSubmit() {
       console.log("submit!");
     },

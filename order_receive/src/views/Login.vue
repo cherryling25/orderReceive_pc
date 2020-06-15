@@ -316,27 +316,34 @@ export default {
         if (res.data.code == 1 || res.data.code == "1") {
           this.GLOBAL.userId = res.data.data.id;
           localStorage.setItem("id", res.data.data.id);
-          if (res.data.data.state == 1) {
-            this.$router.push({
-              path: "../deposit"
-            });
-          } else if (res.data.data.state == 2) {
-            this.$router.push({
-              path: "../home"
-            });
-          } else if (res.data.data.state == 3) {
-            this.$notify.error({
-              message: "该账号正在审核中"
-            });
-          } else if (res.data.data.state == 4) {
-            this.$notify.error({
-              message: "该账号被封"
-            });
-          }else if (res.data.data.state == 5) {
-            this.$notify.error({
-              message: "该账号没有通过审核"
-            });
-          }
+
+          this.GLOBAL.state = res.data.data.state;
+          localStorage.setItem("state",res.data.data.state);
+
+          this.$router.push({
+            path: "../orderList"
+          });
+          // if (res.data.data.state == 1) {
+          //   this.$router.push({
+          //     path: "../deposit"
+          //   });
+          // } else if (res.data.data.state == 2) {
+          //   this.$router.push({
+          //     path: "../orderList"
+          //   });
+          // } else if (res.data.data.state == 3) {
+          //   this.$notify.error({
+          //     message: "该账号正在审核中"
+          //   });
+          // } else if (res.data.data.state == 4) {
+          //   this.$notify.error({
+          //     message: "该账号被封"
+          //   });
+          // }else if (res.data.data.state == 5) {
+          //   this.$notify.error({
+          //     message: "该账号没有通过审核"
+          //   });
+          // }
         } else {
           this.$notify.error({
             message: "用户名或密码错误"

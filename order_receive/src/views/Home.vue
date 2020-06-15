@@ -163,6 +163,7 @@ export default {
       this.$confirm("确认退出吗?","提示",{})
       .then(()=>{
         localStorage.clear("id")
+        localStorage.clear("state")
         this.$router.push("/");
       }).catch(()=>{
 
@@ -187,7 +188,9 @@ export default {
   },
   created(){
     this.GLOBAL.userId = localStorage.getItem("id");
+    this.GLOBAL.state = localStorage.getItem("state");
     console.log(this.GLOBAL.userId)
+    console.log(this.GLOBAL.state)
   }
 };
 </script>

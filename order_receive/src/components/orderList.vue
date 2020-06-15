@@ -375,7 +375,7 @@ export default {
         data: Qs.stringify({
           user_id: this.GLOBAL.userId,
           page: page,
-          size:size
+          size: size
         }),
 
         url: this.GLOBAL.hostUrl5 +"hands/Order/dan_list"
